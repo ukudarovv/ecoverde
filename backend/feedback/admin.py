@@ -1,0 +1,29 @@
+from django.contrib import admin
+
+from .models import FeedbackSubmission, TelegramSubscriber
+
+
+@admin.register(FeedbackSubmission)
+class FeedbackSubmissionAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "name",
+        "email",
+        "phone",
+        "company",
+        "telegram_username",
+        "lang",
+        "created_at",
+        "telegram_sent_to_admin",
+        "telegram_sent_to_user",
+    )
+    list_filter = ("lang", "telegram_sent_to_admin", "telegram_sent_to_user", "created_at")
+    search_fields = ("name", "email", "phone", "company", "telegram_username", "message")
+    readonly_fields = ("created_at", "telegram_sent_to_admin", "telegram_sent_to_user")
+
+
+@admin.register(TelegramSubscriber)
+class TelegramSubscriberAdmin(admin.ModelAdmin):
+    list_display = ("chat_id", "username", "first_name", "created_at", "updated_at")
+    search_fields = ("chat_id", "username", "first_name")
+    readonly_fields = ("created_at", "updated_at")

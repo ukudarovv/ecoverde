@@ -21,7 +21,7 @@ const C = {
   footerBg: "#00361F",
 };
 
-const BOT_USERNAME = import.meta.env.VITE_TELEGRAM_BOT_USERNAME || "ecoverde_bot";
+const BOT_USERNAME = import.meta.env.VITE_TELEGRAM_BOT_USERNAME || "eco_verde_bot";
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1762381157166-f51ac99ab412?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080";

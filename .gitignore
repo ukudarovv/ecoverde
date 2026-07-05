@@ -4,6 +4,8 @@ __pycache__/
 *.sqlite3
 .env
 deploy/remote_deploy.py
+deploy/configure_telegram.py
+deploy/configure_telegram_quick.py
 .venv/
 venv/
 staticfiles/

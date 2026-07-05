@@ -9,7 +9,54 @@ Landing page для инвестиционного проекта EcoVerde с ф
 - **База данных:** SQLite (Docker volume)
 - **Уведомления:** Telegram Bot API
 
-## Быстрый старт (Docker)
+## Production (ecoverde.kz)
+
+На сервере проект развернут в `/opt/ecoverde`:
+
+```bash
+ssh ubuntu@213.155.21.70
+cd /opt/ecoverde
+sudo docker compose ps
+```
+
+- Сайт: https://ecoverde.kz
+- API: https://ecoverde.kz/api/health/
+
+### Telegram на сервере
+
+Отредактируйте `/opt/ecoverde/.env` и добавьте:
+
+```
+TELEGRAM_BOT_TOKEN=...
+TELEGRAM_ADMIN_CHAT_ID=...
+TELEGRAM_BOT_USERNAME=your_bot
+```
+
+Затем запустите бота:
+
+```bash
+cd /opt/ecoverde
+sudo docker compose up -d telegram-bot
+```
+
+### Обновление после git push
+
+```bash
+cd /opt/ecoverde
+git pull
+sudo docker compose up -d --build
+```
+
+### SSL
+
+Сертификат Let's Encrypt уже выпущен. Для продления:
+
+```bash
+sudo certbot renew
+sudo docker compose -f /opt/ecoverde/docker-compose.yml restart frontend
+```
+
+---
 
 1. Скопируйте переменные окружения:
 

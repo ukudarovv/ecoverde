@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *.sqlite3
 .env
+deploy/remote_deploy.py
 .venv/
 venv/
 staticfiles/

@@ -87,7 +87,9 @@ const T = {
     footerPrivacy: "Политика конфиденциальности",
     footerTerms: "Условия использования",
     form: {
+      label: "Связаться с нами",
       title: "Обратная связь",
+      subtitle: "Оставьте заявку — мы ответим по email или в Telegram и обсудим участие в проекте EcoVerde.",
       name: "Имя",
       email: "Email",
       phone: "Телефон",
@@ -101,7 +103,8 @@ const T = {
       error: "Не удалось отправить заявку. Попробуйте позже.",
       required: "Обязательное поле",
       invalidEmail: "Введите корректный email",
-      telegramHint: "Для подтверждения в Telegram сначала запустите бота @bot и нажмите /start",
+      telegramHint: "Для подтверждения в Telegram запустите бота @bot и нажмите /start",
+      telegramCta: "Открыть бота",
     },
   },
   EN: {
@@ -160,7 +163,9 @@ const T = {
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Use",
     form: {
-      title: "Contact Form",
+      label: "Contact Us",
+      title: "Get in Touch",
+      subtitle: "Send us a message and we will respond by email or Telegram to discuss your participation in EcoVerde.",
       name: "Name",
       email: "Email",
       phone: "Phone",
@@ -174,7 +179,8 @@ const T = {
       error: "Failed to submit the form. Please try again later.",
       required: "Required field",
       invalidEmail: "Enter a valid email",
-      telegramHint: "For Telegram confirmation, start the bot @bot and press /start first",
+      telegramHint: "For Telegram confirmation, start the bot @bot and press /start",
+      telegramCta: "Open bot",
     },
   },
   KZ: {
@@ -233,7 +239,9 @@ const T = {
     footerPrivacy: "Құпиялылық саясаты",
     footerTerms: "Пайдалану шарттары",
     form: {
+      label: "Бізбен байланысыңыз",
       title: "Кері байланыс",
+      subtitle: "Өтініш қалдырыңыз — біз email немесе Telegram арқылы жауап беріп, EcoVerde жобасына қатысуды талқылаймыз.",
       name: "Аты",
       email: "Email",
       phone: "Телефон",
@@ -247,7 +255,8 @@ const T = {
       error: "Өтініш жіберу сәтсіз аяқталды. Кейінірек қайталап көріңіз.",
       required: "Міндетті өріс",
       invalidEmail: "Дұрыс email енгізіңіз",
-      telegramHint: "Telegram растауы үшін алдымен @bot ботын іске қосып, /start басыңыз",
+      telegramHint: "Telegram растауы үшін @bot ботын іске қосып, /start басыңыз",
+      telegramCta: "Ботты ашу",
     },
   },
 } as const;
@@ -652,16 +661,57 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-20">
         <div
-          className="grid grid-cols-12 gap-10 pb-14 mb-14"
+          className="pb-14 mb-14"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
         >
-          <div className="col-span-12 lg:col-span-5">
-            <ContactForm lang={lang} labels={t.form} botUsername={BOT_USERNAME} />
-          </div>
-          <div className="col-span-12 lg:col-span-7 flex items-center">
-            <p className="text-sm leading-relaxed max-w-xl" style={{ color: "rgba(255,255,255,0.55)" }}>
-              {t.invDesc}
-            </p>
+          <div className="grid grid-cols-12 gap-8 lg:gap-10 items-start">
+            <div className="col-span-12 lg:col-span-4 space-y-6">
+              <div>
+                <p
+                  className="text-xs font-semibold uppercase mb-3"
+                  style={{ letterSpacing: "0.14em", color: C.accentGreen }}
+                >
+                  {t.form.label}
+                </p>
+                <h2 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4 text-white">
+                  {t.invH2}
+                </h2>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.62)" }}>
+                  {t.invDesc}
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { icon: Phone, value: "+7 707 777 6852" },
+                  { icon: Mail, value: "ecoverdekz@gmail.com" },
+                  { icon: MapPin, value: "Atyrau, Kazakhstan" },
+                ].map(({ icon: Icon, value }) => (
+                  <div
+                    key={value}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3"
+                    style={{
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
+                    <div
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                      style={{ background: "rgba(0,153,51,0.18)", color: C.accentGreen }}
+                    >
+                      <Icon size={16} />
+                    </div>
+                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.78)" }}>
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-span-12 lg:col-span-8">
+              <ContactForm lang={lang} labels={t.form} botUsername={BOT_USERNAME} />
+            </div>
           </div>
         </div>
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+export DEBIAN_FRONTEND=noninteractive
+
 DOMAIN="${DOMAIN:-ecoverde.kz}"
 APP_DIR="${APP_DIR:-/opt/ecoverde}"
 REPO_URL="${REPO_URL:-https://github.com/ukudarovv/ecoverde.git}"

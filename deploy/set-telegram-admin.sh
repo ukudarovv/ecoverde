@@ -12,5 +12,5 @@ fi
 
 cd "$APP_DIR"
 sed -i "s|^TELEGRAM_ADMIN_CHAT_ID=.*|TELEGRAM_ADMIN_CHAT_ID=${CHAT_ID}|" .env
-docker compose up -d telegram-bot backend
-docker compose ps telegram-bot backend
+sudo systemctl restart ecoverde-backend ecoverde-telegram
+sudo systemctl status ecoverde-telegram --no-pager -l | head -8

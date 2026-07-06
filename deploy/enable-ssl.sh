@@ -7,8 +7,8 @@ APP_DIR="${APP_DIR:-/opt/ecoverde}"
 
 cd "$APP_DIR"
 
-echo "==> Stopping frontend for certificate issuance..."
-sudo docker compose stop frontend
+echo "==> Stopping nginx for certificate issuance..."
+sudo systemctl stop nginx
 
 echo "==> Installing certbot if needed..."
 if ! command -v certbot >/dev/null 2>&1; then
@@ -25,9 +25,8 @@ sudo certbot certonly --standalone \
   --non-interactive
 
 echo "==> Enabling SSL nginx config..."
-cp frontend/nginx.ssl.conf frontend/nginx.conf
-
-echo "==> Starting frontend with HTTPS..."
-sudo docker compose up -d --build frontend
+sudo cp "$APP_DIR/deploy/nginx.ssl.conf" /etc/nginx/sites-available/ecoverde
+sudo nginx -t
+sudo systemctl start nginx
 
 echo "==> Done. Check https://${DOMAIN}"

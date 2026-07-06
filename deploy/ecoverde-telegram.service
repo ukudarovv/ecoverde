@@ -1,0 +1,17 @@
+[Unit]
+Description=EcoVerde Telegram Bot
+After=network.target ecoverde-backend.service
+Requires=ecoverde-backend.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/ecoverde/backend
+EnvironmentFile=/opt/ecoverde/.env
+ExecStart=/opt/ecoverde/backend/.venv/bin/python manage.py run_telegram_bot
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

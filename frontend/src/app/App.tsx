@@ -83,7 +83,7 @@ const T = {
     footerContactsTitle: "Контакты",
     footerFollowTitle: "Следите за нами",
     footerAbout: "Мы создаём устойчивые энергетические активы сегодня — ради лучшего завтра.",
-    footerCopyright: "© 2024 EcoVerde. Все права защищены.",
+    footerCopyright: "© 2026 EcoVerde. Все права защищены.",
     footerPrivacy: "Политика конфиденциальности",
     footerTerms: "Условия использования",
     form: {
@@ -159,7 +159,7 @@ const T = {
     footerContactsTitle: "Contacts",
     footerFollowTitle: "Follow Us",
     footerAbout: "We build sustainable energy assets today — for a better tomorrow.",
-    footerCopyright: "© 2024 EcoVerde. All rights reserved.",
+    footerCopyright: "© 2026 EcoVerde. All rights reserved.",
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Use",
     form: {
@@ -235,7 +235,7 @@ const T = {
     footerContactsTitle: "Байланыс",
     footerFollowTitle: "Бізді бақылаңыз",
     footerAbout: "Біз бүгін тұрақты энергетикалық активтер жасаймыз — ертеңгі күн үшін.",
-    footerCopyright: "© 2024 EcoVerde. Барлық құқықтар қорғалған.",
+    footerCopyright: "© 2026 EcoVerde. Барлық құқықтар қорғалған.",
     footerPrivacy: "Құпиялылық саясаты",
     footerTerms: "Пайдалану шарттары",
     form: {
@@ -559,25 +559,25 @@ function Investors({ t, scrollTo }: { t: typeof T["RU"]; scrollTo: (id: string) 
         <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "rgba(245,248,246,0.88)" }} />
       </div>
-      <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-24">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-16 sm:py-24">
         <div
-          className="grid grid-cols-12 gap-10 items-center"
-          style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(8px)", borderRadius: 16, border: `1px solid ${C.borderLight}`, padding: "56px 48px" }}
+          className="grid grid-cols-12 gap-6 sm:gap-10 items-center rounded-2xl border p-6 sm:p-10 lg:p-14"
+          style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(8px)", borderColor: C.borderLight }}
         >
           <div className="col-span-12 lg:col-span-6" id="partners">
             <Overline>{t.invLabel}</Overline>
             <h2 className="font-semibold mb-5" style={{ fontSize: "clamp(26px, 3vw, 38px)", lineHeight: 1.2, color: C.navy }}>{t.invH2}</h2>
-            <p className="text-base leading-relaxed mb-10" style={{ color: C.textMuted }}>{t.invDesc}</p>
-            <div className="flex flex-wrap gap-4">
+            <p className="text-base leading-relaxed mb-8 sm:mb-10" style={{ color: C.textMuted }}>{t.invDesc}</p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => scrollTo("contacts")}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-white cursor-pointer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 text-sm font-semibold text-white cursor-pointer"
                 style={{ background: C.green, height: 52, padding: "0 28px", borderRadius: 6, border: "none" }}
               >
                 {t.invCta1} <ArrowRight size={15} />
               </button>
               <button
-                className="inline-flex items-center text-sm font-semibold cursor-pointer"
+                className="inline-flex w-full sm:w-auto items-center justify-center text-sm font-semibold cursor-pointer"
                 style={{ height: 52, padding: "0 28px", borderRadius: 6, border: `1px solid ${C.navy}`, color: C.navy, background: "transparent" }}
               >
                 {t.invCta2}
@@ -587,9 +587,9 @@ function Investors({ t, scrollTo }: { t: typeof T["RU"]; scrollTo: (id: string) 
           <div className="col-span-12 lg:col-span-6">
             <ul className="space-y-4">
               {t.partnerTypes.map((item, i) => (
-                <li key={i} className="flex items-center gap-4">
-                  <CheckCircle2 size={20} style={{ color: C.green, flexShrink: 0 }} strokeWidth={1.75} />
-                  <span className="text-[15px]" style={{ color: C.textDark }}>{item}</span>
+                <li key={i} className="flex items-start gap-3 sm:gap-4">
+                  <CheckCircle2 size={20} style={{ color: C.green, flexShrink: 0, marginTop: 2 }} strokeWidth={1.75} />
+                  <span className="text-[15px] leading-snug break-words" style={{ color: C.textDark }}>{item}</span>
                 </li>
               ))}
             </ul>
@@ -597,54 +597,6 @@ function Investors({ t, scrollTo }: { t: typeof T["RU"]; scrollTo: (id: string) 
         </div>
       </div>
     </section>
-  );
-}
-
-// ─── Site Location ────────────────────────────────────────────────────────────
-function SiteLocation({ t }: { t: typeof T["RU"] }) {
-  return (
-    <Section bg={C.white}>
-      <div className="grid grid-cols-12 gap-10 items-center">
-        <div className="col-span-12 lg:col-span-5">
-          <Overline>{t.siteLabel}</Overline>
-          <h2 className="font-semibold mb-5" style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.25, color: C.navy }}>{t.siteH2}</h2>
-          <p className="text-base leading-relaxed mb-8" style={{ color: C.textMuted }}>{t.siteDesc}</p>
-          <div className="flex items-center gap-5" style={{ background: "#F0FAF3", border: "1px solid #BFDCC7", borderRadius: 12, padding: "24px 28px" }}>
-            <MapPin size={28} style={{ color: C.green, flexShrink: 0 }} strokeWidth={1.5} />
-            <div>
-              <p className="text-3xl font-semibold" style={{ color: C.navy }}>{t.siteArea}</p>
-              <p className="text-sm mt-0.5" style={{ color: C.textMuted }}>{t.siteCity}</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-12 lg:col-span-7">
-          <div className="relative overflow-hidden flex items-center justify-center" style={{ height: 340, borderRadius: 16, background: "#EEF3F1", border: `1px solid ${C.borderLight}` }}>
-            <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.18 }}>
-              <defs>
-                <pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke={C.softBlueGray} strokeWidth="1" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#mapgrid)" />
-            </svg>
-            <svg className="absolute bottom-8 left-8 opacity-40" width="160" height="60" viewBox="0 0 160 60">
-              <ellipse cx="80" cy="30" rx="80" ry="30" fill="#DCEAF2" />
-            </svg>
-            <svg className="absolute top-12 right-16 opacity-30" width="100" height="40" viewBox="0 0 100 40">
-              <ellipse cx="50" cy="20" rx="50" ry="20" fill="#DCEAF2" />
-            </svg>
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="flex items-center justify-center" style={{ width: 52, height: 52, borderRadius: "50%", background: C.green, boxShadow: "0 0 0 10px rgba(0,153,51,0.15)" }}>
-                <MapPin size={22} color="white" fill="white" strokeWidth={1} />
-              </div>
-              <div className="mt-3 px-4 py-2 text-sm font-semibold text-white rounded" style={{ background: C.navy, borderRadius: 6 }}>
-                {t.sitePin}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Section>
   );
 }
 
@@ -659,7 +611,7 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
         <EcoMark className="w-full h-full" style={{ color: "white", opacity: 0.03 }} />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-20">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 lg:px-10 py-12 sm:py-20 overflow-x-hidden">
         <div
           className="pb-14 mb-14"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
@@ -673,10 +625,10 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
                 >
                   {t.form.label}
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4 text-white">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight mb-4 text-white">
                   {t.invH2}
                 </h2>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.62)" }}>
+                <p className="text-sm leading-relaxed break-words" style={{ color: "rgba(255,255,255,0.62)" }}>
                   {t.invDesc}
                 </p>
               </div>
@@ -701,7 +653,7 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
                     >
                       <Icon size={16} />
                     </div>
-                    <span className="text-sm" style={{ color: "rgba(255,255,255,0.78)" }}>
+                    <span className="text-sm break-words min-w-0" style={{ color: "rgba(255,255,255,0.78)" }}>
                       {value}
                     </span>
                   </div>
@@ -709,13 +661,13 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
               </div>
             </div>
 
-            <div className="col-span-12 lg:col-span-8">
+            <div className="col-span-12 lg:col-span-8 min-w-0">
               <ContactForm lang={lang} labels={t.form} botUsername={BOT_USERNAME} />
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-10 pb-14" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="grid grid-cols-12 gap-8 sm:gap-10 pb-14" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           {/* Brand */}
           <div className="col-span-12 lg:col-span-4">
             <div className="inline-block bg-white rounded-xl px-4 py-2 mb-5">
@@ -737,7 +689,7 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
           </div>
 
           {/* Nav */}
-          <div className="col-span-6 lg:col-span-3">
+          <div className="col-span-12 sm:col-span-6 lg:col-span-3">
             <h5 className="text-xs font-semibold uppercase mb-5" style={{ letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)" }}>{t.footerNavTitle}</h5>
             <ul className="space-y-3">
               {t.nav.map((label, i) => (
@@ -751,20 +703,20 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
           </div>
 
           {/* Contacts */}
-          <div className="col-span-6 lg:col-span-3">
+          <div className="col-span-12 sm:col-span-6 lg:col-span-3">
             <h5 className="text-xs font-semibold uppercase mb-5" style={{ letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)" }}>{t.footerContactsTitle}</h5>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 min-w-0">
                 <Phone size={14} style={{ color: C.accentGreen, marginTop: 2, flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>+7 707 777 6852</span>
+                <span className="text-sm break-words" style={{ color: "rgba(255,255,255,0.65)" }}>+7 707 777 6852</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 min-w-0">
                 <Mail size={14} style={{ color: C.accentGreen, marginTop: 2, flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>ecoverdekz@gmail.com</span>
+                <span className="text-sm break-all" style={{ color: "rgba(255,255,255,0.65)" }}>ecoverdekz@gmail.com</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 min-w-0">
                 <MapPin size={14} style={{ color: C.accentGreen, marginTop: 2, flexShrink: 0 }} />
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>Atyrau, Kazakhstan</span>
+                <span className="text-sm break-words" style={{ color: "rgba(255,255,255,0.65)" }}>Atyrau, Kazakhstan</span>
               </li>
             </ul>
           </div>
@@ -778,9 +730,9 @@ function Footer({ t, lang, scrollTo }: { t: typeof T["RU"]; lang: Lang; scrollTo
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{t.footerCopyright}</p>
-          <div className="flex gap-6">
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-center sm:text-left">
+          <p className="text-xs w-full sm:w-auto" style={{ color: "rgba(255,255,255,0.3)" }}>{t.footerCopyright}</p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto items-center sm:items-start">
             {[t.footerPrivacy, t.footerTerms].map((l) => (
               <a key={l} href="#" className="text-xs transition-opacity hover:opacity-70" style={{ color: "rgba(255,255,255,0.3)" }}>{l}</a>
             ))}
@@ -802,14 +754,13 @@ export default function App() {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}>
+    <div className="overflow-x-hidden" style={{ fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif" }}>
       <Nav lang={lang} setLang={setLang} t={t} />
       <Hero t={t} scrollTo={scrollTo} />
       <FeatureStrip t={t} />
       <Potential t={t} />
       <Why t={t} />
       <Investors t={t} scrollTo={scrollTo} />
-      <SiteLocation t={t} />
       <Footer t={t} lang={lang} scrollTo={scrollTo} />
     </div>
   );

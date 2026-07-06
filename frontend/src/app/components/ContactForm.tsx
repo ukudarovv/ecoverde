@@ -155,7 +155,7 @@ export function ContactForm({ lang, labels, botUsername }: ContactFormProps) {
 
   return (
     <div
-      className="overflow-hidden rounded-2xl border"
+      className="w-full max-w-full overflow-hidden rounded-2xl border"
       style={{
         background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, #F5F8F6 100%)",
         borderColor: "rgba(255,255,255,0.25)",
@@ -163,7 +163,7 @@ export function ContactForm({ lang, labels, botUsername }: ContactFormProps) {
       }}
     >
       <div
-        className="px-6 py-5 sm:px-8 sm:py-6"
+        className="px-5 py-5 sm:px-8 sm:py-6"
         style={{ borderBottom: `1px solid ${BRAND.border}`, background: "rgba(255,255,255,0.72)" }}
       >
         <p
@@ -172,7 +172,7 @@ export function ContactForm({ lang, labels, botUsername }: ContactFormProps) {
         >
           {labels.label}
         </p>
-        <h3 className="text-2xl font-semibold mb-2" style={{ color: BRAND.navy }}>
+        <h3 className="text-xl sm:text-2xl font-semibold mb-2" style={{ color: BRAND.navy }}>
           {labels.title}
         </h3>
         <p className="text-sm leading-relaxed max-w-xl" style={{ color: BRAND.textMuted }}>
@@ -180,7 +180,7 @@ export function ContactForm({ lang, labels, botUsername }: ContactFormProps) {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="px-6 py-6 sm:px-8 sm:py-7 space-y-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="px-5 py-5 sm:px-8 sm:py-7 space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field id="name" label={labels.name} icon={User} error={errors.name?.message}>
             <input

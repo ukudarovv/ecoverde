@@ -6,6 +6,8 @@ __pycache__/
 deploy/remote_deploy.py
 deploy/configure_telegram.py
 deploy/configure_telegram_quick.py
+deploy/check_server.py
+deploy/run_setup_remote.py
 .venv/
 venv/
 staticfiles/

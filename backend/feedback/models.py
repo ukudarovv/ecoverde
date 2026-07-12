@@ -54,3 +54,22 @@ class TelegramSubscriber(models.Model):
             return None
         normalized = username.strip().lstrip("@")
         return normalized.lower() if normalized else None
+
+
+class TelegramAdmin(models.Model):
+    chat_id = models.BigIntegerField("Chat ID", unique=True)
+    name = models.CharField("Имя / подпись", max_length=150, blank=True)
+    username = models.CharField("Username", max_length=64, blank=True)
+    is_active = models.BooleanField("Активен", default=True)
+    created_at = models.DateTimeField("Добавлен", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Администратор Telegram"
+        verbose_name_plural = "Администраторы Telegram"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        label = self.name or self.username or str(self.chat_id)
+        status = "" if self.is_active else " (неактивен)"
+        return f"{label}{status}"
+

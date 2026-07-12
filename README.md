@@ -43,19 +43,35 @@ curl -s https://ecoverde.kz/api/health/
 
 ### Telegram на сервере
 
-Отредактируйте `/opt/ecoverde/.env`:
+В `.env` укажите токен бота:
 
 ```
 TELEGRAM_BOT_TOKEN=...
-TELEGRAM_ADMIN_CHAT_ID=...
 TELEGRAM_BOT_USERNAME=eco_verde_bot
 ```
 
-Затем:
+**Администраторы** (уведомления + просмотр заявок в боте) настраиваются в Django Admin:
+
+1. Откройте `https://ecoverde.kz/admin/` → **Администраторы Telegram**
+2. Добавьте `chat_id` (узнать через [@userinfobot](https://t.me/userinfobot))
+3. Админ должен нажать `/start` у бота `@eco_verde_bot`
+
+Быстрый fallback через скрипт:
 
 ```bash
-sudo bash deploy/set-telegram-admin.sh <ваш_chat_id>
+sudo bash deploy/set-telegram-admin.sh <ваш_chat_id> "Имя админа"
 ```
+
+### Команды бота для админов
+
+| Команда | Описание |
+|---------|----------|
+| `/list` | Последние 10 заявок |
+| `/list 2` | Следующая страница |
+| `/view <id>` | Полная заявка, например `/view 5` |
+| `/help` | Справка |
+
+При новой заявке админам приходит уведомление с кнопкой «Подробнее».
 
 ### SSL
 
@@ -79,8 +95,8 @@ cp .env.example .env
 2. Заполните в `.env`:
 
 - `TELEGRAM_BOT_TOKEN` — токен от [@BotFather](https://t.me/BotFather)
-- `TELEGRAM_ADMIN_CHAT_ID` — chat_id администратора ([@userinfobot](https://t.me/userinfobot))
 - `TELEGRAM_BOT_USERNAME` — username бота без `@`
+- `TELEGRAM_ADMIN_CHAT_ID` — опциональный fallback (лучше через Django Admin)
 
 ### Backend
 
@@ -113,13 +129,19 @@ Vite проксирует `/api` на `http://localhost:8000`.
 
 1. Создайте бота через [@BotFather](https://t.me/BotFather)
 2. Укажите токен в `TELEGRAM_BOT_TOKEN`
-3. Администратор получает уведомление о каждой заявке в `TELEGRAM_ADMIN_CHAT_ID`
+3. Добавьте администраторов в Django Admin → **Администраторы Telegram**
 4. Пользователь для подтверждения должен нажать `/start` у бота и указать Telegram username в форме
 
 ### Команды бота
 
+**Для пользователей:**
 - `/start` — регистрация для получения подтверждений
 - `/help` — инструкция
+
+**Для администраторов:**
+- `/list` — список заявок
+- `/view <id>` — детали заявки
+- `/help` — справка по командам
 
 ## API
 
@@ -146,9 +168,15 @@ Healthcheck.
 ```bash
 cd backend
 .venv/bin/python manage.py createsuperuser
+.venv/bin/python manage.py migrate
 ```
 
 Админка: `http://localhost:8000/admin/`
+
+Разделы:
+- **Заявки** — все отправленные формы
+- **Администраторы Telegram** — chat_id админов с доступом к уведомлениям и `/list`, `/view`
+- **Подписчики Telegram** — пользователи, нажавшие `/start` для подтверждений
 
 ## Структура проекта
 
